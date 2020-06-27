@@ -34,6 +34,16 @@ h1, h2, h3, h4, p, a, ul, li, button {
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    border-bottom: 1px solid transparent;
+}
+
+a:hover, a:focus {
+    border-bottom: 1px solid #0a0a0a;
+}
+
 header {
     padding-top: 20px;
 }
@@ -70,7 +80,7 @@ main {
 }
 
 button {
-    background-color: #f2bd2c;
+    background-color: rgba(10, 10, 10, 0.7);
     border: 0;
     box-shadow: 0;
     cursor: pointer;
@@ -85,18 +95,26 @@ button {
 
 button > p {
     text-align: center;
-    display: inline-block;
-    /* padding: 5px 10px; */
-    border-radius: 50%;
-    border: 1px solid transparent;
+    color: #f2bd2c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all 0.5s ease-in-out;
 }
 
 button:hover, button:focus {
     width: 320px;
     height: 320px;
+    background-color: #f2bd2c;
 }
 
 button:hover > p, button:focus > p {
-    border: 1px solid #0a0a0a
+    color: #0a0a0a
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 20px;
+    font-size: 2rem;
 }
