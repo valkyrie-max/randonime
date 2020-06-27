@@ -4,10 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet"> 
+
+    <!-- styles -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>check</h1>
+    <div class="wrapper">
+        <header>
+            <h1>Randonime<span class="smallCircle"></span></h1>
+            <h2>a simple app that lets you get some wise words from different anime.</h2>
+        </header>
+    
+        <main>
+            <section class="buttonsToGetQs">
+                <button class="oneQ">
+                    <p>one quote</p>
+                </button>
+                <button class="tenQ">
+                    <p>ten quotes</p>
+                </button>
+            </section>
+    
+            <section class="displayingQs">
+                <!-- dynamically added quotes here -->
+            </section>
+        </main>
+    
+        <footer>
+            <p>built by <a href="">ak</a>. powered by <a href="">Anime-chan API</a>.</p>
+        </footer>
+    </div>
 
+    <!-- script -->
     <script src="script.js"></script>
 </body>
 </html>

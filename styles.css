@@ -7,3 +7,96 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 *, *:before, *:after {box-sizing: inherit}
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
+
+/* background f6f8f2 */
+/* text 0a0a0a */
+/* accent f2bd2c */
+
+html {
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #f6f8f2;
+}
+
+.wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 1200px;
+}
+
+h1, h2, h3, h4, p, a, ul, li, button {
+    color: #0a0a0a;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding-top: 20px;
+}
+
+h1 {
+    font-size: 13rem;
+    font-weight: 100;
+    margin-left: -10px;
+}
+
+.smallCircle {
+    display: inline-block;
+    background-color: #f2bd2c;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 3.8rem;
+}
+
+main {
+    margin-top: 50px;
+}
+
+.buttonsToGetQs {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+button {
+    background-color: #f2bd2c;
+    border: 0;
+    box-shadow: 0;
+    cursor: pointer;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    font-size: 3.8rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    transition: all 0.4s ease-in-out;
+}
+
+button > p {
+    text-align: center;
+    display: inline-block;
+    /* padding: 5px 10px; */
+    border-radius: 50%;
+    border: 1px solid transparent;
+    transition: all 0.5s ease-in-out;
+}
+
+button:hover, button:focus {
+    width: 320px;
+    height: 320px;
+}
+
+button:hover > p, button:focus > p {
+    border: 1px solid #0a0a0a
+}
