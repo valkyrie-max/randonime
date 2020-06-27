@@ -23,8 +23,8 @@ body {
 
 .wrapper {
     max-width: 1280px;
+    width: 80%;
     margin: 0 auto;
-    width: 1200px;
 }
 
 h1, h2, h3, h4, p, a, ul, li, button {
@@ -112,9 +112,89 @@ button:hover > p, button:focus > p {
     color: #0a0a0a
 }
 
+.displayingQs {
+    min-height: 50vh;
+    padding-top: 50px;
+    position: relative;
+}
+
+.quoteCircle {
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    left: -40px;
+    top: 10px;
+    width: 150px;
+    height: 150px;
+    z-index: -10;
+    background-color: #f2bd2c;
+}
+
+.quoteContent {
+    border-right: 5px solid #f2bd2c;
+    padding-right: 45px;
+    display: flex;
+    flex-direction: column;
+}
+
+.quoteContent p {
+    font-size: 3rem;
+    line-height: 1.7;
+}
+
+.quoteContent h3 {
+    align-self: end;
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 2.5rem;
+    font-weight: 500;
+    position: relative;
+}
+
+.quoteContent h3:before {
+    content: '';
+    z-index: -10;
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    height: 10px;
+    bottom: 3px;
+    background-color: #f2bd2c;
+}
+
+.quoteOptions {
+    margin-top: 20px;
+    padding-right: 50px;
+    display: flex;
+    justify-content: right;
+}
+
+.quoteOptions input[type=button] {
+    background-color: transparent;
+    border: none;
+    color: #0a0a0a;
+    font-size: 2rem;
+    padding: 0;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    height: auto;
+    text-decoration: none;
+    width: auto;
+    font-weight: 300;
+    text-transform: lowercase; 
+    border-bottom: 5px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.quoteOptions input[type=button]:hover, .quoteOptions input[type=button]:focus {
+    border-bottom: 5px solid #f2bd2c;
+}
+
 footer {
     position: fixed;
     bottom: 0;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     font-size: 2rem;
 }
