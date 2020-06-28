@@ -10,7 +10,15 @@ document.addEventListener("DOMContentLoaded", function() {
         document.execCommand('copy');
         document.body.removeChild(element);
     };
-
+    // function othername() {
+    //     var input = document.getElementById("userInput").value;
+    //     alert(input);
+    // }
+    
+    // page refresh 
+    refreshPage = () => {
+        window.location.reload();
+    } 
     // on button click, api call and get a quote
     const oneQuote = document.getElementsByClassName(`oneQ`);
     oneQuote[0].addEventListener(`click`, function(e) {
@@ -43,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 inputValue[0].value = "copy the quote"
                             }})
                         } value="copy the quote"></input>
+                        <button class="refresh" onclick="window.location.reload()">restart?</button>
                     </div>          
                 `;
                 mainContainer[0].appendChild(quoteDiv);
