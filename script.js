@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //     var input = document.getElementById("userInput").value;
     //     alert(input);
     // }
-    
+
     // page refresh 
     refreshPage = () => {
         window.location.reload();
@@ -57,8 +57,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 mainContainer[0].appendChild(quoteDiv);
             }
             const buttons = document.getElementsByClassName(`buttonsToGetQs`)
-            closeText = () => {buttons[0].style.display="none"}
-            closeText()
+            const quoteField = document.getElementsByClassName(`displayingQs`)
+            closeButtons = () => {
+                quoteField[0].style.display="block"
+                buttons[0].style.display="none"
+            }
+            closeButtons()
         }).catch(function(error){
             console.log(error)
         })
@@ -70,7 +74,44 @@ document.addEventListener("DOMContentLoaded", function() {
         fetch('https://anime-chan.herokuapp.com/api/quotes').then(function(response) {
             return response.json();
         }).then(function (data) {
-            console.log(data)
+            const mainContainer = document.getElementsByClassName(`displayingQs`)
+            // loop to dynamically attach quotes to the page
+            for (let i = 0; i < data.length; i++) {
+                console.log(data[i].anime)
+                const quoteDiv = document.createElement(`div`); 
+                quoteDiv.classList.add(`quote`)
+                console.log(mainContainer)
+                quoteDiv.innerHTML = `
+                    <div id="quoteContent" class="quoteContent">
+                        <span class="quoteCircle"></span>
+                        <p class="quoteText">${data[i].quote}</p>
+                        <h3>${data[i].character}, ${data[i].anime}</h3>
+                    </div>
+                    <div class="quoteOptions">
+                        <input type="button" class="copyQuote" onclick=${addEventListener("click", function(){
+                            // allowing the user to copy the entire text of the div
+                            const copyText = document.querySelector(".quoteContent").textContent;
+                            // function on line 5
+                            copyToClipBoard(copyText)
+                            const inputValue = document.getElementsByClassName("copyQuote");
+                            if (copyText) {
+                                inputValue[0].value = "copied"
+                            } else {
+                                inputValue[0].value = "copy the quote"
+                            }})
+                        } value="copy the quote"></input>
+                        <button class="refresh" onclick="window.location.reload()">restart?</button>
+                    </div>          
+                `;
+                mainContainer[0].appendChild(quoteDiv);
+            }
+            const buttons = document.getElementsByClassName(`buttonsToGetQs`)
+            const quoteField = document.getElementsByClassName(`displayingQs`)
+            closeButtons = () => {
+                quoteField[0].style.display="block"
+                buttons[0].style.display="none"
+            }
+            closeButtons()
         }).catch(function(error){
             console.log(error)
         })
