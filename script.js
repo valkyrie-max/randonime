@@ -3,17 +3,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // function that copies the received str to the clipboard
     const copyToClipBoard = (str) => {
-        const element = document.createElement('textarea');
-        element.value = str;
-        document.body.appendChild(element);
-        element.select();
+        const textArea = document.createElement('textarea');
+        textArea.value = str;
+        document.body.appendChild(textArea);
+        textArea.select();
         document.execCommand('copy');
-        document.body.removeChild(element);
+        document.body.removeChild(textArea);
     };
     // function othername() {
     //     var input = document.getElementById("userInput").value;
     //     alert(input);
     // }
+
+    function copyText() {
+        let text = document.getElementsByClassName(`quoteText`)[0].textContent
+        console.log(text)
+    }
 
     // page refresh 
     refreshPage = () => {
@@ -49,7 +54,16 @@ document.addEventListener("DOMContentLoaded", function() {
                                 inputValue[0].value = "copied"
                             } else {
                                 inputValue[0].value = "copy the quote"
-                            }})
+                            }
+
+                            // const text = document.getElementsByClassName(`quoteText`)[0].textContent
+                            // console.log(text)
+                            // navigator.clipboard.writeText(text).then(function() {
+                            //     alert(`nice`)
+                            //   }, function() {
+                            //     alert(`bad`)
+                            //   });
+                        })
                         } value="copy the quote"></input>
                         <button class="refresh" onclick="window.location.reload()">restart?</button>
                     </div>          
@@ -70,6 +84,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // on button click, api call and get 10
     const tenQuotes = document.getElementsByClassName(`tenQ`);
+    function buttonGeneration() {
+
+    }
     tenQuotes[0].addEventListener(`click`, function(e) {
         fetch('https://anime-chan.herokuapp.com/api/quotes').then(function(response) {
             return response.json();
@@ -77,10 +94,10 @@ document.addEventListener("DOMContentLoaded", function() {
             const mainContainer = document.getElementsByClassName(`displayingQs`)
             // loop to dynamically attach quotes to the page
             for (let i = 0; i < data.length; i++) {
-                console.log(data[i].anime)
+                // console.log(data[i].anime)
                 const quoteDiv = document.createElement(`div`); 
                 quoteDiv.classList.add(`quote`)
-                console.log(mainContainer)
+                // console.log(mainContainer)
                 quoteDiv.innerHTML = `
                     <div id="quoteContent" class="quoteContent">
                         <span class="quoteCircle"></span>
@@ -90,16 +107,18 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="quoteOptions">
                         <input type="button" class="copyQuote" onclick=${addEventListener("click", function(){
                             // allowing the user to copy the entire text of the div
-                            const copyText = document.querySelector(".quoteContent").textContent;
+                            const copyText = document.getElementsByClassName("quoteText");
+                            console.log(copyText)
                             // function on line 5
                             copyToClipBoard(copyText)
                             const inputValue = document.getElementsByClassName("copyQuote");
-                            if (copyText) {
-                                inputValue[0].value = "copied"
+                            // console.log(inputValue[0].value)
+                            if (copyText == data[i].quote ) {
+                                inputValue[i].value = "copied"
                             } else {
-                                inputValue[0].value = "copy the quote"
-                            }})
-                        } value="copy the quote"></input>
+                                inputValue[i].value = "copy the quote"
+                            }
+                        })} value="copy the quote"></input>
                         <button class="refresh" onclick="window.location.reload()">restart?</button>
                     </div>          
                 `;
