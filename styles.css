@@ -68,6 +68,11 @@ h2 {
     font-size: 3.8rem;
 }
 
+.warning {
+    font-size: 2rem;
+    margin-top: 10px;
+}
+
 main {
     margin-top: 50px;
 }
@@ -120,7 +125,7 @@ button:hover > p, button:focus > p {
 
 .quote {
     position: relative;
-    margin: 180px 0px;
+    margin: 150px 0px;
 }
 
 .quoteCircle {
