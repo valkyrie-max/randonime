@@ -1,21 +1,19 @@
 document.addEventListener("DOMContentLoaded", function() {
-
-    console.log(`hello!`)
-
-    // function othername() {
-    //     var input = document.getElementById("userInput").value;
-    //     alert(input);
-    // }
-
-    function copyText() {
-        let text = document.getElementsByClassName(`quoteText`)[0].textContent
-        console.log(text)
-    }
-
-    // page refresh 
+    // page refresh function
     refreshPage = () => {
         window.location.reload();
     } 
+
+    // function that copies the received str to the clipboard
+    const copyToClipBoard = (str) => {
+        const textArea = document.createElement('textarea');
+        textArea.value = str;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+    };
+
     // on button click, api call and get a quote
     const oneQuote = document.getElementsByClassName(`oneQ`);
     oneQuote[0].addEventListener(`click`, function(e) {
@@ -28,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.log(data[i].anime)
                 const quoteDiv = document.createElement(`div`); 
                 quoteDiv.classList.add(`quote`)
-                console.log(mainContainer)
                 quoteDiv.innerHTML = `
                     <div id="quoteContent" class="quoteContent">
                         <span class="quoteCircle"></span>
@@ -37,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                     <div class="quoteOptions">
                         <input type="button" class=copyQuote value="copy the quote"></input>
-                        <button class="refresh" onclick="window.location.reload()">restart?</button>
+                        <button class="refresh" onclick="refreshPage()">restart?</button>
                     </div>          
                 `;
                 mainContainer[0].appendChild(quoteDiv);
@@ -67,17 +64,6 @@ document.addEventListener("DOMContentLoaded", function() {
         })
     })
 
-
-    // function that copies the received str to the clipboard
-    const copyToClipBoard = (str) => {
-        const textArea = document.createElement('textarea');
-        textArea.value = str;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-    };
-
     // on button click, api call and get 10
     const tenQuotes = document.getElementsByClassName(`tenQ`);
     tenQuotes[0].addEventListener(`click`, function(e) {
@@ -98,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                     <div class="quoteOptions">
                         <input type="button" class=copyQuote${i} value="copy the quote"></input>
-                        <button class="refresh" onclick="window.location.reload()">restart?</button>
+                        <button class="refresh" onclick="refreshPage()">restart?</button>
                     </div>          
                 `;
 					mainContainer[0].appendChild(quoteDiv);
@@ -127,5 +113,4 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log(error)
         })
     })
-    
 });
