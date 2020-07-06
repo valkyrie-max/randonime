@@ -22,21 +22,20 @@ document.addEventListener("DOMContentLoaded", function() {
             const quoteDiv = document.createElement(`div`);
             quoteDiv.classList.add(`quote`);
             quoteDiv.innerHTML = `
-            <div id="quoteContent" class="quoteContent quote${i}">
-                <span class="quoteCircle"></span>
-                <p class=quoteText${i}>${data[i].quote}</p>
-                <h3>${data[i].character}, ${data[i].anime}</h3>
-            </div>
-            <div class="quoteOptions">
-                <input type="button" class=copyQuote${i} value="copy the quote"></input>
-                <button class="refresh" onclick="refreshPage()">restart?</button>
-            </div>          
-        `;
+                <div id="quoteContent" class="quoteContent quote${i}">
+                    <span class="quoteCircle"></span>
+                    <p class=quoteText${i}>${data[i].quote}</p>
+                    <h3>${data[i].character}, ${data[i].anime}</h3>
+                </div>
+                <div class="quoteOptions">
+                    <input type="button" class=copyQuote${i} value="copy the quote"></input>
+                    <button class="refresh" onclick="refreshPage()">restart?</button>
+                </div>          
+            `;  
             mainContainer[0].appendChild(quoteDiv);
             const textContainer = document.querySelector(`.quoteText${i}`);
             const copyQuoteBtn = document.querySelector(`.copyQuote${i}`);
             copyQuoteBtn.addEventListener('click', () => {
-                console.log(textContainer.textContent);
                 const copyText = document.querySelector(`.quote${i}`).textContent;
                 copyToClipBoard(copyText)
                 const inputValue = document.getElementsByClassName(`copyQuote${i}`);
@@ -49,8 +48,23 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // function to attach buttons to each quote
-    const attachButtons = () => {
+    const attachWarning = (userSubmission) => {
+        const mainContainer = document.getElementsByClassName(`displayingQs`);
+        const quoteDiv = document.createElement(`div`);
+        quoteDiv.classList.add(`warning`);
+        quoteDiv.innerHTML = `
+            <div id="warning" class="warningContainer">
+                <p>I'm sorry but there are no quotes from <span class="animeName">"${userSubmission}"</span>.</p>
+            </div>
+            <div class="quoteOptions">
+                <button class="refresh" onclick="refreshPage()">restart?</button>
+            </div>          
+        `;  
+        mainContainer[0].appendChild(quoteDiv);
+    }
+
+    // function to hide the hero page
+    const hideHeroPage = () => {
         const buttons = document.getElementsByClassName(`buttonsToGetQs`);
         const quoteField = document.getElementsByClassName(`displayingQs`);
         closeButtons = () => {
@@ -69,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // const mainContainer = document.getElementsByClassName(`displayingQs`)
             // loop to dynamically attach quotes to the page
             attachQuotes(data);
-            attachButtons();
+            hideHeroPage();
         }).catch(function(error){
             console.log(error)
         })
@@ -83,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }).then(function (data) {
             // dynamically attaching quotes to the page
             attachQuotes(data);
-            attachButtons();
+            hideHeroPage();
         }).catch(function(error){
             console.log(error)
         })
@@ -100,10 +114,11 @@ document.addEventListener("DOMContentLoaded", function() {
         }).then(function (data) {
             console.log(data)
             if (data.length <= 0) {
-                console.log(`sorry nothing found with ${userInputCopy}`)
+                attachWarning(userInputCopy);
+                hideHeroPage();
             } else {
                 attachQuotes(data);
-                attachButtons();
+                hideHeroPage();
             }
         }).catch(function(error){
             console.log(error)
