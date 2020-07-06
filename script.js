@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const attachQuotes = (data) => {
         const mainContainer = document.getElementsByClassName(`displayingQs`);
         for (let i = 0; i < data.length; i++) {
-            // console.log(data[i].anime)
             const quoteDiv = document.createElement(`div`);
             quoteDiv.classList.add(`quote`);
             quoteDiv.innerHTML = `
@@ -85,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
             attachQuotes(data);
             hideHeroPage();
         }).catch(function(error){
-            console.log(error)
+            prompt(`something went wrong. please contact the creator of this generator.`)
         })
     })
 
@@ -99,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
             attachQuotes(data);
             hideHeroPage();
         }).catch(function(error){
-            console.log(error)
+            prompt(`something went wrong. please contact the creator of this generator.`)
         })
     })
 
@@ -112,7 +111,6 @@ document.addEventListener("DOMContentLoaded", function() {
         fetch(`https://anime-chan.herokuapp.com/api/quotes?anime=${userInputCopy}`).then(function(response) {
             return response.json();
         }).then(function (data) {
-            console.log(data)
             if (data.length <= 0) {
                 attachWarning(userInputCopy);
                 hideHeroPage();
@@ -121,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 hideHeroPage();
             }
         }).catch(function(error){
-            console.log(error)
+            prompt(`something went wrong. please contact the creator of this generator.`)
         })
     })
 });
