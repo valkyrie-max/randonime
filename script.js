@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
             attachQuotes(data);
             hideHeroPage();
         }).catch(function(error){
-            prompt(`something went wrong. please contact the creator of this generator.`)
+            alert(`something went wrong. please contact the creator of this generator on twitter: @alisacodes.`)
         })
     })
 
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
             attachQuotes(data);
             hideHeroPage();
         }).catch(function(error){
-            prompt(`something went wrong. please contact the creator of this generator.`)
+            alert(`something went wrong. please contact the creator of this generator on twitter: @alisacodes.`)
         })
     })
 
