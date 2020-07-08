@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 </div>
                 <div class="quoteOptions">
                     <input type="button" class=copyQuote${i} value="copy the quote"></input>
-                    <button class="refresh" onclick="refreshPage()">restart?</button>
                 </div>          
             `;  
             mainContainer[0].appendChild(quoteDiv);
@@ -54,10 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
         quoteDiv.innerHTML = `
             <div id="warning" class="warningContainer">
                 <p>I'm sorry but there are no quotes from <span class="animeName">"${userSubmission}"</span>.</p>
-            </div>
-            <div class="quoteOptions">
-                <button class="refresh" onclick="refreshPage()">restart?</button>
-            </div>          
+            </div>       
         `;  
         mainContainer[0].appendChild(quoteDiv);
     }
